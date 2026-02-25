@@ -12,7 +12,7 @@ export const SOCIAL = {
   github: "https://github.com/ThomasMeb",
   linkedin: "https://linkedin.com/in/thomasmebarki",
   twitter: "https://x.com/_elmeb_",
-  email: "thomas.mebarki@protonmail.com",
+  email: "thomas@mebarki.dev",
   egir: "https://egir.app",
 } as const;
 
