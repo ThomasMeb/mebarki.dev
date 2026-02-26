@@ -4,7 +4,7 @@ export const SITE = {
   description:
     "Portfolio de Thomas Mebarki — ML Engineer & Entrepreneur. Projets en Machine Learning, NLP, Computer Vision et SaaS.",
   url: "https://mebarki.dev",
-  ogImage: "/images/og-image.png",
+  ogImage: "/opengraph-image",
   locale: "fr_FR",
 } as const;
 

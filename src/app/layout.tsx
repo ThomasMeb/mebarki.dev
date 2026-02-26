@@ -20,16 +20,17 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     locale: SITE.locale,
     type: "website",
-    images: [{ url: SITE.ogImage, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
     description: SITE.description,
     creator: "@_elmeb_",
-    images: [SITE.ogImage],
   },
   robots: { index: true, follow: true },
+  other: {
+    "theme-color": "#0a0a0b",
+  },
 };
 
 export default function RootLayout({
@@ -40,6 +41,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark">
       <head>
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -49,6 +52,16 @@ export default function RootLayout({
               name: "Thomas Mebarki",
               url: "https://mebarki.dev",
               jobTitle: "ML Engineer & Entrepreneur",
+              description:
+                "ML Engineer & Entrepreneur. Fondateur d'EGIR (SaaS restauration), Grada (trading automatisé) et JobScout (veille emploi IA).",
+              knowsAbout: [
+                "Machine Learning",
+                "NLP",
+                "Computer Vision",
+                "Python",
+                "Deep Learning",
+                "SaaS",
+              ],
               sameAs: [
                 "https://github.com/ThomasMeb",
                 "https://linkedin.com/in/thomasmebarki",

@@ -45,6 +45,21 @@ export const projects: Project[] = [
     tech: ["Python", "XGBoost", "TypeScript", "dHEDGE", "Polygon", "GitHub Actions"],
   },
   {
+    slug: "jobscout",
+    title: "JobScout",
+    subtitle: "Agent autonome de recherche d'emploi",
+    description:
+      "Agent IA autonome qui scrape, analyse et score des offres d'emploi avec LLM. Dashboard interactif et export CSV.",
+    categories: ["Automation", "ML"],
+    metrics: [
+      { label: "Jobs analysés", value: "1,989" },
+      { label: "Sources", value: "Multi-plateforme" },
+      { label: "Scoring", value: "LLM" },
+    ],
+    tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM", "Docker"],
+    githubUrl: "https://github.com/ThomasMeb/JobScout",
+  },
+  {
     slug: "schneider",
     title: "Schneider Energy",
     subtitle: "Prédiction de consommation énergétique",
@@ -57,21 +72,6 @@ export const projects: Project[] = [
       { label: "Features", value: "40" },
     ],
     tech: ["Python", "Scikit-learn", "Random Forest", "Pandas", "Plotly"],
-    githubUrl: "https://github.com/ThomasMeb/portfolio",
-  },
-  {
-    slug: "backmarket",
-    title: "BackMarket Segmentation",
-    subtitle: "Segmentation clients RFM avec KMeans",
-    description:
-      "Segmentation automatisée de la base clients Back Market par analyse RFM et clustering KMeans en 4 segments actionnables.",
-    categories: ["ML"],
-    metrics: [
-      { label: "Segments", value: "4" },
-      { label: "Méthode", value: "RFM + KMeans" },
-      { label: "Clients analysés", value: "10K+" },
-    ],
-    tech: ["Python", "Scikit-learn", "KMeans", "Pandas", "Plotly"],
     githubUrl: "https://github.com/ThomasMeb/portfolio",
   },
   {
@@ -90,6 +90,21 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ThomasMeb/portfolio",
   },
   {
+    slug: "backmarket",
+    title: "BackMarket Segmentation",
+    subtitle: "Segmentation clients RFM avec KMeans",
+    description:
+      "Segmentation automatisée de la base clients Back Market par analyse RFM et clustering KMeans en 4 segments actionnables.",
+    categories: ["ML"],
+    metrics: [
+      { label: "Segments", value: "4" },
+      { label: "Méthode", value: "RFM + KMeans" },
+      { label: "Clients analysés", value: "10K+" },
+    ],
+    tech: ["Python", "Scikit-learn", "KMeans", "Pandas", "Plotly"],
+    githubUrl: "https://github.com/ThomasMeb/portfolio",
+  },
+  {
     slug: "santevet",
     title: "SantéVet Dogs",
     subtitle: "Classification de races canines",
@@ -103,20 +118,5 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "TensorFlow", "Keras", "ResNet50V2", "Transfer Learning"],
     githubUrl: "https://github.com/ThomasMeb/portfolio",
-  },
-  {
-    slug: "jobscout",
-    title: "JobScout",
-    subtitle: "Agent autonome de recherche d'emploi",
-    description:
-      "Agent IA autonome qui scrape, analyse et score des offres d'emploi avec LLM. Dashboard interactif et export CSV.",
-    categories: ["Automation", "ML"],
-    metrics: [
-      { label: "Jobs analysés", value: "1,989" },
-      { label: "Sources", value: "Multi-plateforme" },
-      { label: "Scoring", value: "LLM" },
-    ],
-    tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM", "Docker"],
-    githubUrl: "https://github.com/ThomasMeb/JobScout",
   },
 ];
