@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { MetricCard } from "@/components/shared/metric-card";
+import { projects } from "@/lib/data/projects";
+import { ProjectDetailLayout } from "@/components/shared/project-detail-layout";
 import { TechBadge } from "@/components/shared/tech-badge";
 import { SectionHeading } from "@/components/shared/section-heading";
 
@@ -12,6 +9,8 @@ export const metadata: Metadata = {
   description:
     "EGIR : plateforme SaaS analytique pour restaurateurs avec IA intégrée. Calcul des coûts, fiches techniques, dashboard de rentabilité.",
 };
+
+const project = projects.find((p) => p.slug === "egir")!;
 
 const tech = [
   "Python 3.12",
@@ -60,43 +59,10 @@ const features = [
 
 export default function EgirPage() {
   return (
-    <article className="px-6 py-24">
-      <div className="mx-auto max-w-5xl">
-        {/* Header */}
-        <div className="mb-16 flex flex-col items-center gap-6 text-center">
-          <Image
-            src="/images/egir_logo.png"
-            alt="EGIR Logo"
-            width={80}
-            height={80}
-            className="rounded-xl"
-          />
-          <div>
-            <h1 className="text-4xl font-bold tracking-tight">
-              <span className="text-teal">EGIR</span> — SaaS Restauration
-            </h1>
-            <p className="mt-3 text-lg text-muted-foreground">
-              Assistant financier pour restaurateurs — &quot;La clarté sur vos marges&quot;
-            </p>
-          </div>
-          <Button asChild size="lg" className="bg-teal text-background hover:bg-teal/90">
-            <Link href="https://egir.app" target="_blank" rel="noopener noreferrer">
-              Découvrir egir.app <ExternalLink className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-
-        {/* Metrics */}
-        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <MetricCard label="Marge moyenne" value="+10%" />
-          <MetricCard label="Temps économisé" value="80%" />
-          <MetricCard label="Pilote" value="10 restaurants" />
-          <MetricCard label="Statut" value="MVP en prod" />
-        </div>
-
-        {/* Features */}
-        <SectionHeading title="Fonctionnalités" highlight="Clés" />
-        <div className="mb-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <ProjectDetailLayout
+      project={project}
+      demo={
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
             <div
               key={f.title}
@@ -107,14 +73,9 @@ export default function EgirPage() {
             </div>
           ))}
         </div>
-
-        {/* Context */}
-        <SectionHeading
-          title="Contexte &"
-          highlight="Genèse"
-          description="D'une immersion en cuisine à la création d'un SaaS."
-        />
-        <div className="mb-16 space-y-4 text-muted-foreground">
+      }
+      context={
+        <div className="space-y-4 text-muted-foreground">
           <p>
             Après mon Master en Data Science et un passage chez Shift Technology, j&apos;ai
             voulu comprendre un métier de terrain. J&apos;ai obtenu un diplôme de cuisinier et
@@ -127,15 +88,17 @@ export default function EgirPage() {
             l&apos;IA pour automatiser le calcul des coûts.
           </p>
         </div>
-
-        {/* Tech Stack */}
-        <SectionHeading title="Stack" highlight="Technique" />
-        <div className="flex flex-wrap gap-2">
-          {tech.map((t) => (
-            <TechBadge key={t} name={t} />
-          ))}
+      }
+      resources={
+        <div className="space-y-6">
+          <SectionHeading title="Stack" highlight="Technique" />
+          <div className="flex flex-wrap gap-2">
+            {tech.map((t) => (
+              <TechBadge key={t} name={t} />
+            ))}
+          </div>
         </div>
-      </div>
-    </article>
+      }
+    />
   );
 }
