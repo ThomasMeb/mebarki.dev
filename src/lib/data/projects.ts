@@ -67,12 +67,13 @@ export const projects: Project[] = [
     categories: ["Automation", "ML"],
     metrics: [
       { label: "Jobs analysés", value: "1,989" },
-      { label: "Sources", value: "Multi-plateforme" },
+      { label: "Sources", value: "9 scrapers" },
       { label: "Scoring", value: "LLM" },
-      { label: "Tests", value: "40+" },
+      { label: "Tests", value: "140+" },
     ],
-    tech: ["Python", "FastAPI", "Next.js", "SQLite", "LLM", "Docker"],
+    tech: ["Python", "FastAPI", "Next.js", "Supabase", "LLM", "Docker"],
     theme: { from: "#3b82f6", to: "#8b5cf6", icon: "Search", pattern: "dots" },
+    liveUrl: "https://jobscout.mebarki.dev",
     githubUrl: "https://github.com/ThomasMeb/JobScout",
   },
   {
