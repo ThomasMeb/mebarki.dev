@@ -10,33 +10,33 @@ export const timeline: TimelineItem[] = [
   {
     year: "2025+",
     title: "Fondateur — EGIR",
-    subtitle: "SaaS pour restaurateurs",
+    subtitle: "SaaS analytique pour restaurateurs",
     description:
-      "SaaS analytique d'aide à la décision pour restaurateurs. Développement full-stack, intégration IA (Mistral), déploiement cloud EU. Pilote 10 restaurants.",
+      "SaaS en phase de lancement commercial avec la Mairie de Gravelines (pilote B2G). Stack Next.js + FastAPI + PostgreSQL, Mistral LLM, Stripe. Déployé sur VPS OVH. Freemium 79-119€/mois.",
     type: "entrepreneurship",
   },
   {
-    year: "2025",
+    year: "2024-2025",
     title: "Diplôme d'Artisan Cuisinier",
-    subtitle: "À l'École des Chefs",
+    subtitle: "À l'École des Chefs — Café de Paris, Calais",
     description:
-      "Formation chez un maître restaurateur. Immersion terrain au Café de Paris, Calais. Analyse des marges, stocks et pricing — menant à la création d'EGIR.",
+      "8 mois d'immersion en cuisine professionnelle chez un Maître Restaurateur. Analyse des marges, stocks et pricing — observations transformées en features EGIR.",
     type: "education",
   },
   {
     year: "2023-2024",
-    title: "Projets ML / Data Science",
+    title: "Missions ML / Data Science",
     subtitle: "Schneider · BackMarket · StackOverflow · SantéVet",
     description:
-      "5 projets end-to-end : prédiction énergétique, segmentation clients, NLP multi-label, classification d'images, trading automatisé.",
+      "4 missions end-to-end : prédiction énergétique (R²=0.83), segmentation clients 750k, NLP multi-label (BERT, Precision@5=78%), classification d'images 120 races (ResNet50V2 + SVM RBF).",
     type: "project",
   },
   {
     year: "2023",
-    title: "ML Engineer — Détection de Fraude",
-    subtitle: "Shift Technology (Licorne Insurtech)",
+    title: "ML Engineer — Shift Technology",
+    subtitle: "Licorne Insurtech (Paris)",
     description:
-      "Feature engineering et modélisation de scoring de risque. Modèles supervisés et non supervisés pour détection d'anomalies transactionnelles.",
+      "Stage puis mission freelance. Scoring supervisé (XGBoost) puis anomaly detection non supervisée (Isolation Forest, autoencoders) + features de graphe social. PySpark/Databricks.",
     type: "work",
   },
   {
