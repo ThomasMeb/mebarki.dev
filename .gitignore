@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude-mem auto-generated context files
+CLAUDE.md
+**/CLAUDE.md
+
+# ML model binaries (training artifacts, not used at runtime)
+/models/

@@ -1,0 +1,12 @@
+# Normalize line endings to LF on commit, auto-detect text files
+* text=auto eol=lf
+
+# Treat binary assets as binary (no EOL normalization / diff)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.joblib binary
+*.pkl binary

@@ -18,10 +18,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -35,7 +31,11 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="text-lg font-bold tracking-tight">
+        <Link
+          href="/"
+          onClick={() => setMobileOpen(false)}
+          className="text-lg font-bold tracking-tight"
+        >
           <span className="text-teal">T</span>M
         </Link>
 
@@ -89,6 +89,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setMobileOpen(false)}
                   className={cn(
                     "rounded-lg px-4 py-3 text-sm font-medium transition-colors",
                     pathname === link.href
