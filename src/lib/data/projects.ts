@@ -81,15 +81,15 @@ export const projects: Project[] = [
     title: "Schneider Energy",
     subtitle: "Prédiction de consommation énergétique",
     description:
-      "Modèle de prédiction de consommation énergétique de bâtiments pour Schneider Electric avec XGBoost. Features temporelles (sin/cos, lag), météo (HDD/CDD) et bâtiment. R² = 0.83, +45% vs baseline linéaire.",
+      "Modèle de prédiction de consommation énergétique et d'émissions CO₂ de bâtiments pour Schneider Electric. Random Forest (énergie) et XGBoost (CO₂) sur des caractéristiques de bâtiment (surface, ENERGY STAR, âge, type). R² = 0.80, +45% vs baseline linéaire.",
     categories: ["ML"],
     metrics: [
-      { label: "R²", value: "0.83" },
+      { label: "R²", value: "0.80" },
       { label: "vs Baseline", value: "+45%" },
       { label: "Bâtiments", value: "1,650" },
       { label: "Features", value: "40" },
     ],
-    tech: ["Python", "XGBoost", "Scikit-learn", "SHAP", "Pandas", "Plotly"],
+    tech: ["Python", "Random Forest", "XGBoost", "Scikit-learn", "SHAP", "Pandas", "Plotly"],
     theme: { from: "#22c55e", to: "#15803d", icon: "Zap", pattern: "circuit" },
     githubUrl: "https://github.com/ThomasMeb/portfolio",
   },

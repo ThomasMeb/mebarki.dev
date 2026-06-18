@@ -65,7 +65,7 @@ export function SchneiderDemo() {
   return (
     <div className="space-y-8">
       <p className="text-sm text-muted-foreground">
-        Mode démo — estimation heuristique reproduisant le comportement du modèle Random Forest.
+        Mode démo — estimation heuristique reproduisant le comportement des modèles (Random Forest pour l&apos;énergie, XGBoost pour le CO₂).
       </p>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">

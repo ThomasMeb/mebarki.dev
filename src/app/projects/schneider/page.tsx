@@ -8,7 +8,7 @@ import { SchneiderDemo } from "@/components/demos/schneider-demo";
 export const metadata: Metadata = {
   title: "Schneider Energy — Prédiction Énergétique",
   description:
-    "Prédiction de consommation énergétique et émissions CO₂ des bâtiments avec Random Forest pour Schneider Electric.",
+    "Prédiction de consommation énergétique et émissions CO₂ des bâtiments avec Random Forest (énergie) et XGBoost (CO₂) pour Schneider Electric.",
 };
 
 const project = projects.find((p) => p.slug === "schneider")!;
