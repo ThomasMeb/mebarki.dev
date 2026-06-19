@@ -5,10 +5,12 @@ export function MetricCard({
   label,
   value,
   delta,
+  color,
 }: {
   label: string;
   value: string;
   delta?: string;
+  color?: string;
 }) {
   return (
     <motion.div
@@ -17,7 +19,12 @@ export function MetricCard({
       viewport={{ once: true }}
       className="rounded-xl border border-border bg-card p-5 text-center"
     >
-      <p className="text-2xl font-bold text-teal">{value}</p>
+      <p
+        className="font-mono text-2xl font-bold text-teal"
+        style={color ? { color } : undefined}
+      >
+        {value}
+      </p>
       <p className="mt-1 text-sm text-muted-foreground">{label}</p>
       {delta && <p className="mt-1 text-xs text-green-400">{delta}</p>}
     </motion.div>

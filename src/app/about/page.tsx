@@ -16,7 +16,8 @@ export default function AboutPage() {
       <section className="px-6 py-24">
         <div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-[2fr_1fr]">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight">
+            <span className="eyebrow">À propos</span>
+            <h1 className="mt-4 text-4xl font-light tracking-tight sm:text-5xl">
               À propos de <span className="text-teal">Thomas</span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
@@ -59,9 +60,12 @@ export default function AboutPage() {
       {/* Certifications */}
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-5xl">
-          <h2 className="mb-8 text-center text-3xl font-bold tracking-tight">
-            Certifications & <span className="text-teal">Extras</span>
-          </h2>
+          <div className="mb-8 text-center">
+            <span className="eyebrow">Au-delà du code</span>
+            <h2 className="mt-3 text-3xl font-light tracking-tight sm:text-4xl">
+              Certifications & <span className="text-teal">Extras</span>
+            </h2>
+          </div>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold">Projets ML réalisés</h3>

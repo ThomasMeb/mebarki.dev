@@ -89,7 +89,12 @@ export function ProjectDetailLayout({
           className="mb-12 grid grid-cols-2 gap-4 sm:grid-cols-4"
         >
           {project.metrics.map((m) => (
-            <MetricCard key={m.label} label={m.label} value={m.value} />
+            <MetricCard
+              key={m.label}
+              label={m.label}
+              value={m.value}
+              color={project.theme.from}
+            />
           ))}
         </motion.div>
 

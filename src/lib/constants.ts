@@ -36,6 +36,6 @@ export const CATEGORY_COLORS: Record<string, string> = {
   NLP: "bg-red-500/20 text-red-400 border-red-500/30",
   CV: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
   SaaS: "bg-yellow-400/20 text-yellow-300 border-yellow-400/30",
-  "Time Series": "bg-violet/20 text-violet border-violet/30",
+  "Time Series": "bg-violet/15 text-violet-300 border-violet/30",
   Automation: "bg-orange-500/20 text-orange-400 border-orange-500/30",
 };
