@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/hero";
+import { HomeIntro } from "@/components/sections/home-intro";
 import { ProjectGrid } from "@/components/sections/project-grid";
+import { HomeCta } from "@/components/sections/home-cta";
 
 export const metadata: Metadata = {
   title: "Thomas Mebarki — ML Engineer & Entrepreneur",
@@ -13,7 +15,9 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <HomeIntro />
       <ProjectGrid />
+      <HomeCta />
     </>
   );
 }
