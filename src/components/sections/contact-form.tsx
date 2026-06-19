@@ -63,11 +63,11 @@ export function ContactForm() {
     >
       <h3 className="text-lg font-semibold">Envoyer un message</h3>
 
-      <Input name="name" placeholder="Nom *" required className="bg-secondary" />
-      <Input name="email" type="email" placeholder="Email *" required className="bg-secondary" />
+      <Input name="name" aria-label="Nom" placeholder="Nom *" required className="bg-secondary" />
+      <Input name="email" type="email" aria-label="Email" placeholder="Email *" required className="bg-secondary" />
 
       <Select value={subject} onValueChange={setSubject}>
-        <SelectTrigger className="bg-secondary">
+        <SelectTrigger aria-label="Sujet du message" className="bg-secondary">
           <SelectValue placeholder="Sujet" />
         </SelectTrigger>
         <SelectContent>
@@ -81,6 +81,7 @@ export function ContactForm() {
 
       <Textarea
         name="message"
+        aria-label="Message"
         placeholder="Message *"
         required
         rows={5}

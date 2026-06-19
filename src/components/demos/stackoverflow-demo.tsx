@@ -37,6 +37,7 @@ export function StackOverflowDemo() {
           <div>
             <label className="mb-1 block text-sm text-muted-foreground">Exemple</label>
             <select
+              aria-label="Exemple de question"
               value={selectedExample}
               onChange={(e) => loadExample(Number(e.target.value))}
               className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm"
@@ -52,6 +53,7 @@ export function StackOverflowDemo() {
             <label className="mb-1 block text-sm text-muted-foreground">Titre</label>
             <input
               type="text"
+              aria-label="Titre de la question"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Ex: How to parse JSON in Python?"
@@ -81,17 +83,17 @@ export function StackOverflowDemo() {
               <label className="mb-1 block text-sm text-muted-foreground">
                 Nombre de tags : <span className="text-teal">{topK}</span>
               </label>
-              <input type="range" min={3} max={10} value={topK}
+              <input type="range" aria-label="Nombre de tags" min={3} max={10} value={topK}
                 onChange={(e) => setTopK(Number(e.target.value))}
-                className="w-full accent-[#00d4aa]" />
+                className="w-full accent-primary" />
             </div>
             <div>
               <label className="mb-1 block text-sm text-muted-foreground">
                 Seuil : <span className="text-teal">{threshold.toFixed(2)}</span>
               </label>
-              <input type="range" min={0} max={100} value={threshold * 100}
+              <input type="range" aria-label="Seuil de confiance" min={0} max={100} value={threshold * 100}
                 onChange={(e) => setThreshold(Number(e.target.value) / 100)}
-                className="w-full accent-[#00d4aa]" />
+                className="w-full accent-primary" />
             </div>
           </div>
         </div>

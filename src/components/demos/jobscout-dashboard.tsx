@@ -39,11 +39,12 @@ export function JobScoutDashboard() {
         </label>
         <input
           type="range"
+          aria-label="Score minimum"
           min={0}
           max={100}
           value={minScore}
           onChange={(e) => setMinScore(Number(e.target.value))}
-          className="w-full accent-[#00d4aa]"
+          className="w-full accent-primary"
         />
       </div>
 

@@ -167,9 +167,9 @@ export function SanteVetDemo() {
             <label className="mb-1 block text-sm text-muted-foreground">
               Nombre de prédictions : <span className="text-teal">{topK}</span>
             </label>
-            <input type="range" min={1} max={5} value={topK}
+            <input type="range" aria-label="Nombre de prédictions" min={1} max={5} value={topK}
               onChange={(e) => setTopK(Number(e.target.value))}
-              className="w-full accent-[#00d4aa]" />
+              className="w-full accent-primary" />
           </div>
         </div>
 

@@ -24,7 +24,7 @@ export function ProjectDetailLayout({
   return (
     <article className="relative">
       {/* Banner */}
-      <ProjectBanner slug={project.slug} theme={project.theme} variant="hero" />
+      <ProjectBanner slug={project.slug} theme={project.theme} variant="hero" categories={project.categories} />
 
       <div className="mx-auto max-w-5xl px-6">
         {/* Back link */}
@@ -104,6 +104,7 @@ export function ProjectDetailLayout({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
+          <h2 className="sr-only">Détails du projet</h2>
           <ProjectTabs demo={demo} context={context} resources={resources} />
         </motion.div>
       </div>

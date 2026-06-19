@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import type { ProjectTheme } from "@/lib/data/projects";
 import { BannerPattern } from "@/lib/banner-patterns";
+import { BannerMotif, bannerMotifLabel } from "@/lib/banner-motifs";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   ChefHat,
@@ -22,110 +23,79 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   ScanEye,
 };
 
-const floatPositions = [
-  { top: "15%", left: "10%", delay: "0s", size: "h-5 w-5 sm:h-6 sm:w-6" },
-  { top: "25%", right: "15%", delay: "1.5s", size: "h-4 w-4 sm:h-5 sm:w-5" },
-  { bottom: "30%", left: "20%", delay: "3s", size: "h-4 w-4 sm:h-5 sm:w-5" },
-  { bottom: "20%", right: "10%", delay: "0.8s", size: "h-5 w-5 sm:h-6 sm:w-6" },
-];
-
 export function ProjectBanner({
   slug,
   theme,
   variant = "hero",
+  categories = [],
 }: {
   slug: string;
   theme: ProjectTheme;
   variant?: "hero" | "card";
+  categories?: string[];
 }) {
   const Icon = iconMap[theme.icon];
   const isCard = variant === "card";
+  const label = bannerMotifLabel(categories);
 
   return (
     <div
       className={`relative w-full overflow-hidden ${
-        isCard ? "h-[100px] sm:h-[120px]" : "h-[200px] sm:h-[280px]"
+        isCard ? "h-[110px] sm:h-[130px]" : "h-[220px] sm:h-[300px]"
       }`}
     >
-      {/* Gradient layer */}
+      {/* Gradient mesh */}
       <div
         className="absolute inset-0"
         style={{
-          background: `linear-gradient(135deg, ${theme.from}15, ${theme.to}15)`,
+          background: `radial-gradient(120% 120% at 0% 0%, ${theme.from}22, transparent 55%), radial-gradient(120% 130% at 100% 100%, ${theme.to}1c, transparent 55%)`,
         }}
       />
 
-      {/* Pattern layer */}
+      {/* Faint texture */}
       <BannerPattern type={theme.pattern} slug={`${slug}-${variant}`} color={theme.from} />
 
-      {/* Floating icons */}
-      {!isCard &&
-        floatPositions.map((pos, i) => (
+      {/* Generative, category-driven motif */}
+      <BannerMotif categories={categories} color={theme.from} />
+
+      {/* Editorial icon plate + label (hero only) */}
+      {!isCard && (
+        <>
           <div
-            key={i}
-            className="banner-float absolute opacity-20"
+            className="absolute left-5 top-5 flex h-10 w-10 items-center justify-center rounded-md border"
             style={{
-              top: pos.top,
-              left: pos.left,
-              right: pos.right,
-              bottom: pos.bottom,
-              animationDelay: pos.delay,
+              borderColor: `${theme.from}40`,
+              background: `${theme.from}12`,
               color: theme.from,
             }}
           >
-            {Icon && <Icon className={pos.size} />}
+            {Icon && <Icon className="h-5 w-5" />}
           </div>
-        ))}
-
-      {/* Card: small floating icons (2 only) */}
-      {isCard && (
-        <>
-          <div
-            className="banner-float absolute opacity-15"
-            style={{ top: "20%", right: "12%", animationDelay: "0s", color: theme.from }}
+          <span
+            className="absolute bottom-5 left-5 font-mono text-[0.7rem] uppercase tracking-[0.22em]"
+            style={{ color: theme.from, opacity: 0.85 }}
           >
-            {Icon && <Icon className="h-4 w-4" />}
-          </div>
-          <div
-            className="banner-float absolute opacity-15"
-            style={{ bottom: "25%", left: "10%", animationDelay: "2s", color: theme.from }}
-          >
-            {Icon && <Icon className="h-3 w-3" />}
-          </div>
+            {label}
+          </span>
         </>
       )}
 
-      {/* Central icon with glow */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className="rounded-full p-3 sm:p-4"
-          style={{
-            background: `radial-gradient(circle, ${theme.from}20, transparent 70%)`,
-          }}
-        >
-          {Icon && (
-            <span style={{ color: theme.from }}>
-              <Icon
-                className={`${isCard ? "h-8 w-8" : "h-12 w-12 sm:h-16 sm:w-16"} opacity-30`}
-              />
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Bottom fade */}
+      {/* Bottom fade for text blending */}
       <div
         className="absolute inset-x-0 bottom-0"
         style={{
-          height: isCard ? "50%" : "40%",
+          height: isCard ? "45%" : "40%",
           background: "linear-gradient(to top, var(--background), transparent)",
         }}
       />
-      {/* Card: top fade for border blending */}
+
+      {/* Card: top hairline */}
       {isCard && (
         <div
           className="absolute inset-x-0 top-0 h-px"
-          style={{ background: `linear-gradient(to right, transparent, ${theme.from}30, transparent)` }}
+          style={{
+            background: `linear-gradient(to right, transparent, ${theme.from}40, transparent)`,
+          }}
         />
       )}
     </div>

@@ -20,12 +20,15 @@ export default function ContactPage() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
-        <h1 className="mb-4 text-center text-4xl font-bold tracking-tight">
-          Me <span className="text-teal">Contacter</span>
-        </h1>
-        <p className="mb-16 text-center text-muted-foreground">
-          Toujours ouvert aux discussions sur le ML, l&apos;entrepreneuriat ou une collaboration.
-        </p>
+        <div className="mb-16 text-center">
+          <span className="eyebrow">Contact</span>
+          <h1 className="mt-4 text-4xl font-light tracking-tight sm:text-5xl">
+            Me <span className="text-teal">Contacter</span>
+          </h1>
+          <p className="mt-4 text-muted-foreground">
+            Toujours ouvert aux discussions sur le ML, l&apos;entrepreneuriat ou une collaboration.
+          </p>
+        </div>
 
         <div className="grid gap-12 md:grid-cols-2">
           {/* Left - Info */}
@@ -41,7 +44,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <h3 className="eyebrow mb-3 block">
                 Email
               </h3>
               <Link
@@ -54,7 +57,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <h3 className="eyebrow mb-3 block">
                 Localisation
               </h3>
               <div className="flex items-center gap-2 text-muted-foreground">
@@ -64,7 +67,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <h3 className="eyebrow mb-3 block">
                 Réseaux
               </h3>
               <div className="flex gap-3">

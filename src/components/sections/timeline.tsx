@@ -21,14 +21,17 @@ export function Timeline() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 text-center text-3xl font-bold tracking-tight"
+          className="mb-14 text-center"
         >
-          Parcours <span className="text-teal">Professionnel</span>
-        </motion.h2>
+          <span className="eyebrow">Parcours</span>
+          <h2 className="mt-3 text-3xl font-light tracking-tight sm:text-4xl">
+            Parcours <span className="text-teal">Professionnel</span>
+          </h2>
+        </motion.div>
 
         <div className="relative">
           {/* Vertical line */}
@@ -64,7 +67,7 @@ export function Timeline() {
                         : "md:ml-auto md:w-[calc(50%-2rem)] md:pl-8"
                     }`}
                   >
-                    <span className="text-sm font-bold text-teal">{item.year}</span>
+                    <span className="font-mono text-sm font-medium text-teal">{item.year}</span>
                     <h3 className="mt-1 text-lg font-bold">{item.title}</h3>
                     <p className="text-sm text-muted-foreground">{item.subtitle}</p>
                     <p className="mt-2 text-sm text-muted-foreground/80">

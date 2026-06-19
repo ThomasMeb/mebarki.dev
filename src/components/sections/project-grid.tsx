@@ -61,7 +61,7 @@ export function ProjectGrid() {
                   />
 
                   <div className="relative">
-                    <ProjectBanner slug={project.slug} theme={project.theme} variant="card" />
+                    <ProjectBanner slug={project.slug} theme={project.theme} variant="card" categories={project.categories} />
                     {/* index number */}
                     <span
                       className="absolute left-4 top-3 font-mono text-xs tracking-widest"

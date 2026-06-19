@@ -27,7 +27,8 @@ export default function CVPage() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-3xl text-center">
-        <h1 className="text-4xl font-bold tracking-tight">
+        <span className="eyebrow">Curriculum</span>
+        <h1 className="mt-4 text-4xl font-light tracking-tight sm:text-5xl">
           Mon <span className="text-teal">CV</span>
         </h1>
         <p className="mt-4 text-muted-foreground">

@@ -68,7 +68,7 @@ export function BackMarketDemo() {
             <label className="mb-1 block text-sm text-muted-foreground">
               Récence (jours) : <span className="text-teal">{recency}</span>
             </label>
-            <input type="number" min={1} max={600} value={recency}
+            <input type="number" aria-label="Récence en jours" min={1} max={600} value={recency}
               onChange={(e) => setRecency(Number(e.target.value))}
               className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm" />
           </div>
@@ -77,7 +77,7 @@ export function BackMarketDemo() {
             <label className="mb-1 block text-sm text-muted-foreground">
               Fréquence (commandes) : <span className="text-teal">{frequency}</span>
             </label>
-            <input type="number" min={1} max={20} value={frequency}
+            <input type="number" aria-label="Fréquence (nombre de commandes)" min={1} max={20} value={frequency}
               onChange={(e) => setFrequency(Number(e.target.value))}
               className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm" />
           </div>
@@ -86,7 +86,7 @@ export function BackMarketDemo() {
             <label className="mb-1 block text-sm text-muted-foreground">
               Montant total (BRL) : <span className="text-teal">{monetary}</span>
             </label>
-            <input type="number" min={10} max={5000} step={10} value={monetary}
+            <input type="number" aria-label="Montant total en BRL" min={10} max={5000} step={10} value={monetary}
               onChange={(e) => setMonetary(Number(e.target.value))}
               className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm" />
           </div>

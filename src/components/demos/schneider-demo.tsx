@@ -77,41 +77,41 @@ export function SchneiderDemo() {
             <label className="mb-1 block text-sm text-muted-foreground">
               Surface totale (m²) : <span className="text-teal">{surface.toLocaleString()}</span>
             </label>
-            <input type="range" min={100} max={200000} step={100} value={surface}
+            <input type="range" aria-label="Surface totale en m²" min={100} max={200000} step={100} value={surface}
               onChange={(e) => setSurface(Number(e.target.value))}
-              className="w-full accent-[#00d4aa]" />
+              className="w-full accent-primary" />
           </div>
 
           <div>
             <label className="mb-1 block text-sm text-muted-foreground">
               Nombre d&apos;étages : <span className="text-teal">{floors}</span>
             </label>
-            <input type="range" min={1} max={50} value={floors}
+            <input type="range" aria-label="Nombre d'étages" min={1} max={50} value={floors}
               onChange={(e) => setFloors(Number(e.target.value))}
-              className="w-full accent-[#00d4aa]" />
+              className="w-full accent-primary" />
           </div>
 
           <div>
             <label className="mb-1 block text-sm text-muted-foreground">
               Âge (années) : <span className="text-teal">{age}</span>
             </label>
-            <input type="range" min={0} max={100} value={age}
+            <input type="range" aria-label="Âge du bâtiment en années" min={0} max={100} value={age}
               onChange={(e) => setAge(Number(e.target.value))}
-              className="w-full accent-[#00d4aa]" />
+              className="w-full accent-primary" />
           </div>
 
           <div>
             <label className="mb-1 block text-sm text-muted-foreground">
               Score ENERGY STAR : <span className="text-teal">{energyStar}</span>
             </label>
-            <input type="range" min={1} max={100} value={energyStar}
+            <input type="range" aria-label="Score ENERGY STAR" min={1} max={100} value={energyStar}
               onChange={(e) => setEnergyStar(Number(e.target.value))}
-              className="w-full accent-[#00d4aa]" />
+              className="w-full accent-primary" />
           </div>
 
           <div>
             <label className="mb-1 block text-sm text-muted-foreground">Type de bâtiment</label>
-            <select value={buildingType} onChange={(e) => setBuildingType(e.target.value)}
+            <select aria-label="Type de bâtiment" value={buildingType} onChange={(e) => setBuildingType(e.target.value)}
               className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm">
               {BUILDING_TYPES.map((t) => (
                 <option key={t} value={t}>{t}</option>

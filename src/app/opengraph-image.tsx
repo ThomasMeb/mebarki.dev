@@ -16,7 +16,7 @@ export default function OGImage() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #0a0a0b 0%, #111113 50%, #0a0a0b 100%)",
+          background: "linear-gradient(135deg, #0b0a0a 0%, #131211 50%, #0b0a0a 100%)",
           fontFamily: "system-ui, sans-serif",
         }}
       >
@@ -28,14 +28,14 @@ export default function OGImage() {
             marginBottom: "24px",
           }}
         >
-          <span style={{ fontSize: "64px", fontWeight: 800, color: "#00d4aa" }}>T</span>
+          <span style={{ fontSize: "64px", fontWeight: 800, color: "#ff5e3a" }}>T</span>
           <span style={{ fontSize: "64px", fontWeight: 800, color: "#ffffff" }}>M</span>
         </div>
         <h1
           style={{
             fontSize: "48px",
             fontWeight: 700,
-            color: "#e5e5e5",
+            color: "#ece7df",
             margin: "0 0 12px 0",
             textAlign: "center",
           }}
@@ -45,7 +45,7 @@ export default function OGImage() {
         <p
           style={{
             fontSize: "28px",
-            color: "#00d4aa",
+            color: "#ff5e3a",
             margin: "0 0 32px 0",
           }}
         >
