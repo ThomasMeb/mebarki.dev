@@ -8,58 +8,90 @@ const VAULT_URL =
 const UP = "#34d399";
 const DOWN = "#f87171";
 
-interface Perf {
+interface Btc {
+  d7: number;
+  d30: number;
+  d90: number;
+  d180: number;
+  d365: number;
+}
+interface Data {
   perf7d: number | null;
   perf30d: number | null;
   perfQuarter: number | null;
   perfHalfyear: number | null;
   perfYear: number | null;
+  btc: Btc | null;
 }
 
 const fmt = (n: number | null | undefined) =>
   n == null ? "—" : `${n >= 0 ? "+" : ""}${n.toFixed(1)}%`;
+const col = (n: number | null | undefined) =>
+  n == null ? undefined : n >= 0 ? UP : DOWN;
 
 export function GradaDashboard() {
-  const [perf, setPerf] = useState<Perf | null>(null);
+  const [d, setD] = useState<Data | null>(null);
 
   useEffect(() => {
     fetch("/api/dhedge")
       .then((r) => r.json())
-      .then((d) => {
-        if (d.tokenPrice) setPerf(d);
+      .then((x) => {
+        if (x.perfYear !== undefined) setD(x);
       })
       .catch(() => {});
   }, []);
 
-  const periods = [
-    { label: "7 jours", v: perf?.perf7d },
-    { label: "30 jours", v: perf?.perf30d },
-    { label: "3 mois", v: perf?.perfQuarter },
-    { label: "6 mois", v: perf?.perfHalfyear },
-    { label: "1 an", v: perf?.perfYear },
+  const rows = [
+    { label: "7 jours", g: d?.perf7d, b: d?.btc?.d7 },
+    { label: "30 jours", g: d?.perf30d, b: d?.btc?.d30 },
+    { label: "3 mois", g: d?.perfQuarter, b: d?.btc?.d90 },
+    { label: "6 mois", g: d?.perfHalfyear, b: d?.btc?.d180 },
+    { label: "1 an", g: d?.perfYear, b: d?.btc?.d365 },
   ];
 
   return (
     <div className="space-y-8">
-      {/* Performance by period — live */}
+      {/* Grada vs Bitcoin — live comparison */}
       <div className="rounded-xl border border-border bg-card p-6">
-        <h3 className="mb-1 font-semibold">Performance par période</h3>
+        <h3 className="mb-1 font-semibold">Grada vs Bitcoin (buy &amp; hold)</h3>
         <p className="mb-5 font-mono text-xs text-muted-foreground">
-          tirée en direct de la blockchain — rien n&apos;est maquillé
+          en direct · gain réalisé en évitant la baisse du marché
         </p>
-        <div className="grid grid-cols-3 gap-x-4 gap-y-5 sm:grid-cols-5">
-          {periods.map((p) => (
-            <div key={p.label}>
-              <p
-                className="font-mono text-xl font-bold"
-                style={{ color: p.v == null ? undefined : p.v >= 0 ? UP : DOWN }}
-              >
-                {fmt(p.v)}
-              </p>
-              <p className="mt-0.5 text-xs text-muted-foreground">{p.label}</p>
-            </div>
-          ))}
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-border text-left font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                <th className="py-2 pr-4 font-normal">Période</th>
+                <th className="py-2 pr-4 text-right font-normal">Grada</th>
+                <th className="py-2 pr-4 text-right font-normal">Bitcoin</th>
+                <th className="py-2 text-right font-normal">Écart</th>
+              </tr>
+            </thead>
+            <tbody className="font-mono">
+              {rows.map((r) => {
+                const ecart =
+                  r.g != null && r.b != null ? r.g - r.b : null;
+                return (
+                  <tr key={r.label} className="border-b border-border/60">
+                    <td className="py-2.5 pr-4 font-sans text-muted-foreground">{r.label}</td>
+                    <td className="py-2.5 pr-4 text-right" style={{ color: col(r.g) }}>{fmt(r.g)}</td>
+                    <td className="py-2.5 pr-4 text-right" style={{ color: col(r.b) }}>{fmt(r.b)}</td>
+                    <td
+                      className="py-2.5 text-right font-semibold"
+                      style={{ color: col(ecart) }}
+                    >
+                      {ecart == null ? "—" : `${ecart >= 0 ? "+" : ""}${ecart.toFixed(1)} pts`}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
+        <p className="mt-4 text-xs text-muted-foreground">
+          Grada (live, on-chain) vs Bitcoin (CoinGecko). Un écart positif = la
+          stratégie a fait mieux que détenir du BTC sur la période.
+        </p>
       </div>
 
       {/* How it works — plain language for non-developers */}
@@ -67,12 +99,12 @@ export function GradaDashboard() {
         <h3 className="mb-3 font-semibold">Comment ça marche, en clair</h3>
         <p className="text-sm leading-relaxed text-muted-foreground">
           Un programme décide automatiquement, sans intervention humaine, comment
-          se positionner sur le Bitcoin. Les ordres sont exécutés directement sur
-          la blockchain via une vault dHEDGE : il n&apos;y a ni intermédiaire, ni
-          chiffre invérifiable. C&apos;est une{" "}
-          <strong className="text-foreground">phase d&apos;expérimentation</strong>{" "}
-          en conditions réelles — toutes les performances affichées sont tirées en
-          direct de la blockchain, gains comme pertes.
+          se positionner sur le Bitcoin — et notamment quand <strong className="text-foreground">se
+          mettre à l&apos;abri</strong> en marché baissier. Les ordres sont exécutés
+          directement sur la blockchain via une vault dHEDGE : ni intermédiaire, ni
+          chiffre invérifiable. C&apos;est une phase d&apos;expérimentation en
+          conditions réelles, et toutes les performances ci-dessus sont tirées en
+          direct de la blockchain.
         </p>
       </div>
 
