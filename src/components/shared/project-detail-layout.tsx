@@ -15,11 +15,15 @@ export function ProjectDetailLayout({
   demo,
   context,
   resources,
+  badge,
+  metricsSlot,
 }: {
   project: Project;
   demo: React.ReactNode;
   context: React.ReactNode;
   resources: React.ReactNode;
+  badge?: React.ReactNode;
+  metricsSlot?: React.ReactNode;
 }) {
   return (
     <article className="relative">
@@ -42,7 +46,7 @@ export function ProjectDetailLayout({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative z-10 mb-10 flex flex-col items-center gap-4 text-center"
+          className="relative z-10 mb-12 flex flex-col items-center gap-5 text-center"
         >
           <div className="flex items-center gap-3">
             {project.image && (
@@ -54,16 +58,22 @@ export function ProjectDetailLayout({
                 className="rounded-lg"
               />
             )}
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              <span style={{ color: project.theme.from }}>{project.title}</span>
-              <span className="text-muted-foreground font-normal text-xl sm:text-2xl ml-3">
-                {project.subtitle}
-              </span>
+            <h1
+              className="text-4xl font-bold tracking-tight sm:text-5xl"
+              style={{ color: project.theme.from }}
+            >
+              {project.title}
             </h1>
           </div>
 
+          <p className="max-w-xl text-lg text-muted-foreground sm:text-xl">
+            {project.subtitle}
+          </p>
+
+          {badge}
+
           {/* CTA buttons */}
-          <div className="flex gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {project.liveUrl && (
               <Button asChild size="lg" style={{ backgroundColor: project.theme.from }} className="text-background hover:opacity-90">
                 <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -86,16 +96,22 @@ export function ProjectDetailLayout({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-12 grid grid-cols-2 gap-4 sm:grid-cols-4"
+          className="mb-12"
         >
-          {project.metrics.map((m) => (
-            <MetricCard
-              key={m.label}
-              label={m.label}
-              value={m.value}
-              color={project.theme.from}
-            />
-          ))}
+          {metricsSlot ? (
+            metricsSlot
+          ) : (
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {project.metrics.map((m) => (
+                <MetricCard
+                  key={m.label}
+                  label={m.label}
+                  value={m.value}
+                  color={project.theme.from}
+                />
+              ))}
+            </div>
+          )}
         </motion.div>
 
         {/* Tabs */}

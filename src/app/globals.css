@@ -96,6 +96,14 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Subtle blueprint dot-grid for depth (very faint, recruiter-readable) */
+    background-image: radial-gradient(
+      circle,
+      rgba(205, 211, 220, 0.022) 1px,
+      transparent 1.5px
+    );
+    background-size: 24px 24px;
+    background-attachment: fixed;
   }
   html {
     scroll-behavior: smooth;

@@ -20,12 +20,14 @@ export function MetricCard({
       className="rounded-xl border border-border bg-card p-5 text-center"
     >
       <p
-        className="font-mono text-2xl font-bold text-teal"
+        className={`break-words font-mono font-bold leading-tight text-teal ${
+          value.length > 9 ? "text-base" : "text-2xl"
+        }`}
         style={color ? { color } : undefined}
       >
         {value}
       </p>
-      <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+      <p className="mt-1 break-words text-sm text-muted-foreground">{label}</p>
       {delta && <p className="mt-1 text-xs text-green-400">{delta}</p>}
     </motion.div>
   );

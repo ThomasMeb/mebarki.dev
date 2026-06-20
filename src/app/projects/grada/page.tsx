@@ -4,6 +4,7 @@ import { ProjectDetailLayout } from "@/components/shared/project-detail-layout";
 import { TechBadge } from "@/components/shared/tech-badge";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { GradaDashboard } from "@/components/demos/grada-dashboard";
+import { GradaLiveMetrics } from "@/components/demos/grada-live-metrics";
 
 export const metadata: Metadata = {
   title: "Grada Trading — Trading Bitcoin on-chain",
@@ -29,6 +30,16 @@ export default function GradaPage() {
   return (
     <ProjectDetailLayout
       project={project}
+      badge={
+        <span
+          className="inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-xs"
+          style={{ borderColor: "#f59e0b55", color: "#f59e0b", background: "#f59e0b14" }}
+        >
+          <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#f59e0b" }} />
+          Phase d&apos;expérimentation
+        </span>
+      }
+      metricsSlot={<GradaLiveMetrics />}
       demo={<GradaDashboard />}
       context={
         <div className="space-y-6 text-muted-foreground">
