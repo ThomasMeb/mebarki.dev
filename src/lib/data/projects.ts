@@ -18,6 +18,7 @@ export interface Project {
   theme: ProjectTheme;
   image?: string;
   liveUrl?: string;
+  liveLabel?: string;
   githubUrl?: string;
   highlight?: boolean;
 }
@@ -45,18 +46,19 @@ export const projects: Project[] = [
   {
     slug: "grada",
     title: "Grada Trading",
-    subtitle: "Prédiction BTC + vault dHEDGE automatisé",
+    subtitle: "Trading Bitcoin automatisé, on-chain via dHEDGE",
     description:
-      "Bot de trading automatisé utilisant XGBoost pour prédire la direction du Bitcoin. Exécution on-chain via dHEDGE sur Polygon avec vault publiquement auditable. Actuellement en DRY_RUN post-audit ML.",
+      "Stratégie de trading systématique sur Bitcoin, exécutée automatiquement on-chain via une vault dHEDGE publiquement auditable sur Polygon. Phase d'expérimentation en conditions réelles — performance vérifiable en direct.",
     categories: ["ML", "Time Series"],
     metrics: [
-      { label: "Accuracy", value: "61%" },
-      { label: "Sharpe Ratio", value: "3.37" },
-      { label: "Statut", value: "DRY_RUN" },
+      { label: "Statut", value: "Expérimentation" },
+      { label: "Exécution", value: "On-chain" },
+      { label: "Réseau", value: "Polygon" },
     ],
-    tech: ["Python", "XGBoost", "TypeScript", "dHEDGE", "Polygon", "GitHub Actions"],
+    tech: ["Python", "Machine Learning", "TypeScript", "dHEDGE", "Polygon", "GitHub Actions"],
     theme: { from: "#f59e0b", to: "#8b5cf6", icon: "TrendingUp", pattern: "waves" },
     liveUrl: "https://app.dhedge.org/vault/0x27462cd4f35d4b3d118eaa85acb61a2cb9ba4e08",
+    liveLabel: "Performance live",
   },
   {
     slug: "jobscout",

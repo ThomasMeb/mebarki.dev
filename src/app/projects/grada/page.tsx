@@ -6,16 +6,16 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { GradaDashboard } from "@/components/demos/grada-dashboard";
 
 export const metadata: Metadata = {
-  title: "Grada Trading — Prédiction BTC + dHEDGE",
+  title: "Grada Trading — Trading Bitcoin on-chain",
   description:
-    "Bot de trading automatisé : prédiction BTC avec XGBoost et exécution on-chain via vault dHEDGE sur Polygon.",
+    "Stratégie de trading systématique sur Bitcoin, exécutée automatiquement on-chain via une vault dHEDGE publiquement auditable sur Polygon.",
 };
 
 const project = projects.find((p) => p.slug === "grada")!;
 
 const tech = [
   "Python",
-  "XGBoost",
+  "Machine Learning",
   "TypeScript",
   "dHEDGE SDK",
   "ethers.js",
@@ -32,30 +32,33 @@ export default function GradaPage() {
       demo={<GradaDashboard />}
       context={
         <div className="space-y-6 text-muted-foreground">
-          <h3 className="text-lg font-semibold text-foreground">Méthodologie</h3>
+          <h3 className="text-lg font-semibold text-foreground">Le projet</h3>
           <p>
-            Walk-Forward Validation sur fenêtre glissante de 1500 jours : chaque jour, le
-            modèle est ré-entraîné et prédit la direction du BTC pour le lendemain.
+            Grada est une stratégie de trading entièrement automatisée sur le
+            Bitcoin. Aucune intervention manuelle : le système prend ses décisions,
+            puis exécute les ordres directement sur la blockchain.
           </p>
-          <h4 className="font-semibold text-foreground">Découvertes clés</h4>
+          <h4 className="font-semibold text-foreground">Ce qui le rend différent</h4>
           <ul className="list-inside list-disc space-y-2">
             <li>
-              <strong>Macro features (+269% earning)</strong> : DXY, S&amp;P 500, VIX et Gold
-              apportent un signal fort (+3.7x earning)
+              <strong className="text-foreground">Transparence totale</strong> :
+              exécution on-chain via une vault dHEDGE — performance et positions
+              vérifiables publiquement, en temps réel.
             </li>
             <li>
-              <strong>On-chain features (-18.6%)</strong> : MVRV, exchange flows, hash rate
-              dégradent les performances (bruit &gt; signal)
+              <strong className="text-foreground">Zéro boîte noire</strong> : pas de
+              chiffre invérifiable, tout est auditable sur Polygon.
             </li>
             <li>
-              <strong>Calibration</strong> : XGBoost surpasse LightGBM et CatBoost par la
-              qualité de ses probabilités, optimisant le position sizing
+              <strong className="text-foreground">100% automatisé</strong> : du
+              signal à l&apos;exécution on-chain, sans intervention humaine.
             </li>
           </ul>
-          <h4 className="font-semibold text-foreground">Pipeline quotidien</h4>
-          <p>
-            GitHub Actions (00:30 UTC) : fetch données → feature engineering (22) → train
-            XGBoost → predict proba → signal.json → swap via dHEDGE SDK → notification Telegram
+          <p className="text-sm">
+            <em>
+              Phase d&apos;expérimentation — la méthodologie détaillée et les
+              statistiques de performance sont en cours de consolidation.
+            </em>
           </p>
         </div>
       }

@@ -67,7 +67,7 @@ export function ProjectDetailLayout({
             {project.liveUrl && (
               <Button asChild size="lg" style={{ backgroundColor: project.theme.from }} className="text-background hover:opacity-90">
                 <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                  Voir le site <ExternalLink className="ml-2 h-4 w-4" />
+                  {project.liveLabel || "Voir le site"} <ExternalLink className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             )}

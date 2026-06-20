@@ -14,11 +14,22 @@ const line: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
 };
 
-function Cmd({ children }: { children: React.ReactNode }) {
+function Cmd({
+  children,
+  gloss,
+}: {
+  children: React.ReactNode;
+  gloss?: string;
+}) {
   return (
     <p className="text-muted-foreground">
       <span className="select-none text-teal">❯</span>{" "}
       <span className="text-foreground/90">{children}</span>
+      {gloss && (
+        <span className="ml-2 select-none text-xs text-muted-foreground/50">
+          # {gloss}
+        </span>
+      )}
     </p>
   );
 }
@@ -61,7 +72,7 @@ export function Hero() {
 
             {/* whoami */}
             <motion.div variants={line}>
-              <Cmd>whoami</Cmd>
+              <Cmd gloss="qui suis-je">whoami</Cmd>
               <h1 className="mt-2 text-[clamp(2.1rem,7vw,4.5rem)] font-bold leading-[0.95] tracking-tight text-foreground">
                 Thomas Mebarki
               </h1>
@@ -72,7 +83,7 @@ export function Hero() {
 
             {/* manifesto */}
             <motion.div variants={line}>
-              <Cmd>cat manifesto.txt</Cmd>
+              <Cmd gloss="ma philosophie">cat manifesto.txt</Cmd>
               <p className="mt-2 max-w-2xl text-base text-foreground/80 sm:text-lg">
                 &laquo; Je construis des modèles qui servent le business, pas
                 l&apos;inverse. &raquo;
@@ -85,7 +96,7 @@ export function Hero() {
 
             {/* ls projects */}
             <motion.div variants={line}>
-              <Cmd>ls projects/</Cmd>
+              <Cmd gloss="mes projets — cliquables">ls projects/</Cmd>
               <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1.5">
                 {projects.map((p) => (
                   <Link
@@ -104,7 +115,7 @@ export function Hero() {
 
             {/* actions */}
             <motion.div variants={line}>
-              <Cmd>open _</Cmd>
+              <Cmd gloss="me contacter">open _</Cmd>
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <Link
                   href="/projects"
