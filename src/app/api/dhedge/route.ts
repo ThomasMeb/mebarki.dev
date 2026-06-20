@@ -9,12 +9,15 @@ export const revalidate = 600; // ISR 10 min
 export async function GET() {
   const query = `{
     fund(address: "${VAULT_ADDRESS}") {
-      name
       tokenPrice
       totalValue
+      sortinoRatio
+      performance
       performanceMetrics {
         week
         month
+        quarter
+        halfyear
         year
       }
     }
@@ -39,13 +42,24 @@ export async function GET() {
       return NextResponse.json({ error: "No fund data" }, { status: 404 });
     }
 
-    const tokenPrice = (parseInt(fund.tokenPrice) / WEI).toFixed(6);
-    const totalValue = (parseInt(fund.totalValue) / WEI).toFixed(2);
-    const perf = fund.performanceMetrics || {};
-    const perf7d = perf.week ? (parseInt(perf.week) / WEI - 1) * 100 : 0;
-    const perf30d = perf.month ? (parseInt(perf.month) / WEI - 1) * 100 : 0;
+    const m = fund.performanceMetrics || {};
+    // performanceMetrics are returned as 1e18-scaled multipliers (1.0 = no change)
+    const toPct = (v?: string) =>
+      v != null ? (parseInt(v) / WEI - 1) * 100 : null;
 
-    return NextResponse.json({ tokenPrice, totalValue, perf7d, perf30d });
+    return NextResponse.json({
+      tokenPrice: (parseInt(fund.tokenPrice) / WEI).toFixed(6),
+      totalValue: (parseInt(fund.totalValue) / WEI).toFixed(2),
+      sortino: fund.sortinoRatio != null ? parseFloat(fund.sortinoRatio) : null,
+      perfInception: fund.performance
+        ? (parseInt(fund.performance) / WEI - 1) * 100
+        : null,
+      perf7d: toPct(m.week),
+      perf30d: toPct(m.month),
+      perfQuarter: toPct(m.quarter),
+      perfHalfyear: toPct(m.halfyear),
+      perfYear: toPct(m.year),
+    });
   } catch {
     return NextResponse.json({ error: "fetch failed" }, { status: 500 });
   }

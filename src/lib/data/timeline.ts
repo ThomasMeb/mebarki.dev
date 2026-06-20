@@ -28,7 +28,7 @@ export const timeline: TimelineItem[] = [
     title: "Missions ML / Data Science",
     subtitle: "Schneider · BackMarket · StackOverflow · SantéVet",
     description:
-      "4 missions end-to-end : prédiction énergétique (R²=0.83), segmentation clients 750k, NLP multi-label (BERT, Precision@5=78%), classification d'images 120 races (ResNet50V2 + SVM RBF).",
+      "4 missions end-to-end : prédiction énergétique (R²=0.80), segmentation clients 750k, NLP multi-label (BERT, Precision@5=78%), classification d'images 120 races (ResNet50V2 + SVM RBF).",
     type: "project",
   },
   {

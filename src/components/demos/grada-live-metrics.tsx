@@ -5,14 +5,20 @@ import { MetricCard } from "@/components/shared/metric-card";
 interface VaultData {
   tokenPrice: string;
   totalValue: string;
-  perf7d: number;
-  perf30d: number;
+  sortino: number | null;
+  perfYear: number | null;
 }
 
 const AMBER = "#f59e0b";
+const UP = "#34d399";
+const DOWN = "#f87171";
+const signColor = (n: number | null | undefined) =>
+  n == null ? AMBER : n >= 0 ? UP : DOWN;
+const pct = (n: number | null | undefined) =>
+  n == null ? "—" : `${n >= 0 ? "+" : ""}${n.toFixed(1)}%`;
 
 export function GradaLiveMetrics() {
-  const [vault, setVault] = useState<VaultData | null>(null);
+  const [v, setV] = useState<VaultData | null>(null);
   const [state, setState] = useState<"loading" | "ok" | "error">("loading");
 
   useEffect(() => {
@@ -20,7 +26,7 @@ export function GradaLiveMetrics() {
       .then((r) => r.json())
       .then((d) => {
         if (d.tokenPrice) {
-          setVault(d);
+          setV(d);
           setState("ok");
         } else {
           setState("error");
@@ -29,12 +35,15 @@ export function GradaLiveMetrics() {
       .catch(() => setState("error"));
   }, []);
 
-  const pct = (n: number) => `${n >= 0 ? "+" : ""}${n.toFixed(2)}%`;
   const cards = [
-    { label: "Valeur de part", value: vault ? `$${Number(vault.tokenPrice).toFixed(4)}` : "—" },
-    { label: "Encours (AUM)", value: vault ? `$${Number(vault.totalValue).toFixed(2)}` : "—" },
-    { label: "7 jours", value: vault ? pct(vault.perf7d) : "—" },
-    { label: "30 jours", value: vault ? pct(vault.perf30d) : "—" },
+    { label: "Perf. 1 an", value: pct(v?.perfYear), color: signColor(v?.perfYear) },
+    {
+      label: "Ratio de Sortino",
+      value: v?.sortino != null ? v.sortino.toFixed(2) : "—",
+      color: signColor(v?.sortino),
+    },
+    { label: "Encours (AUM)", value: v ? `$${v.totalValue}` : "—", color: AMBER },
+    { label: "Valeur de part", value: v ? `$${Number(v.tokenPrice).toFixed(4)}` : "—", color: AMBER },
   ];
 
   return (
@@ -51,11 +60,11 @@ export function GradaLiveMetrics() {
           ? "connexion à la vault…"
           : state === "error"
             ? "données live indisponibles"
-            : "performance live · vault dHEDGE · Polygon"}
+            : "données live · vault dHEDGE · Polygon"}
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         {cards.map((c) => (
-          <MetricCard key={c.label} label={c.label} value={c.value} color={AMBER} />
+          <MetricCard key={c.label} label={c.label} value={c.value} color={c.color} />
         ))}
       </div>
     </div>
