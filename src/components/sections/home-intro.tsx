@@ -29,10 +29,10 @@ export function HomeIntro() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="eyebrow">Approche</span>
-          <h2 className="mt-5 max-w-3xl text-2xl font-normal leading-snug sm:text-3xl">
+          <span className="font-mono text-xs text-teal">{"// approche"}</span>
+          <h2 className="mt-4 max-w-3xl text-2xl font-normal leading-snug sm:text-3xl">
             Entre la recherche et le produit, je choisis ce qui{" "}
-            <span className="italic text-teal">marche en production</span>.
+            <span className="text-teal">marche en production</span>.
           </h2>
         </motion.div>
 

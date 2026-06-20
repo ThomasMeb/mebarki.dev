@@ -1,23 +1,24 @@
-import { Inter, JetBrains_Mono, Fraunces } from "next/font/google";
+import { Space_Mono, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 
-// Body / UI
-export const inter = Inter({
+// Terminal voice — headings, prompts, labels, data
+export const spaceMono = Space_Mono({
+  weight: ["400", "700"],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-space-mono",
   display: "swap",
 });
 
-// Data, labels, eyebrows
+// Body / readable prose
+export const ibmPlexSans = IBM_Plex_Sans({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-ibm-sans",
+  display: "swap",
+});
+
+// Secondary mono for dense data / code-ish UI
 export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
-});
-
-// Editorial display — headings & signature
-export const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  style: ["normal", "italic"],
 });

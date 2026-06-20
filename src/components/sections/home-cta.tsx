@@ -14,9 +14,9 @@ export function HomeCta() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-6xl"
       >
-        <span className="eyebrow">Contact</span>
-        <h2 className="mt-5 max-w-3xl text-4xl font-light leading-tight tracking-tight sm:text-6xl">
-          Un modèle à mettre <span className="italic text-teal">en production</span> ?
+        <span className="font-mono text-xs text-teal">$ ./contact</span>
+        <h2 className="mt-4 max-w-3xl text-4xl font-light leading-tight tracking-tight sm:text-6xl">
+          Un modèle à mettre <span className="text-teal">en production</span> ?
         </h2>
         <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
           Missions ML, projets data, ou simplement échanger. La boîte de réception

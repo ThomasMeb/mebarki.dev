@@ -30,13 +30,13 @@ export function ProjectGrid() {
           className="flex items-end justify-between border-b border-border pb-6"
         >
           <div>
-            <span className="eyebrow">Sélection</span>
+            <span className="font-mono text-xs text-teal">$ ls ~/projects</span>
             <h2 className="mt-3 text-4xl font-light tracking-tight sm:text-5xl">
               Projets
             </h2>
           </div>
-          <span className="eyebrow hidden sm:block">
-            {String(projects.length).padStart(2, "0")} études de cas
+          <span className="hidden font-mono text-xs text-muted-foreground sm:block">
+            {`// ${String(projects.length).padStart(2, "0")} études de cas`}
           </span>
         </motion.div>
 

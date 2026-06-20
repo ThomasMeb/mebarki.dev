@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, jetbrainsMono, fraunces } from "@/lib/fonts";
+import { spaceMono, ibmPlexSans, jetbrainsMono } from "@/lib/fonts";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { LenisProvider } from "@/components/layout/lenis-provider";
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   other: {
-    "theme-color": "#0b0a0a",
+    "theme-color": "#0a0c0f",
   },
 };
 
@@ -76,7 +76,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} font-sans antialiased`}
+        className={`${ibmPlexSans.variable} ${spaceMono.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <LenisProvider>
           <Navbar />

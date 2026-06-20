@@ -1,128 +1,135 @@
 "use client";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/lib/data/projects";
 
-const fade: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: "easeOut" },
-  }),
+const group: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.18, delayChildren: 0.25 } },
 };
 
-const SIGNATURE_PROJECTS = ["EGIR", "Grada", "JobScout"];
+const line: Variants = {
+  hidden: { opacity: 0, y: 6 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+};
+
+function Cmd({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-muted-foreground">
+      <span className="select-none text-teal">❯</span>{" "}
+      <span className="text-foreground/90">{children}</span>
+    </p>
+  );
+}
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border">
-      {/* Editorial backdrop: warm radial + hairline rule, very restrained */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 15% 0%, rgba(255,94,58,0.10), transparent 70%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-border to-transparent"
-      />
-
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-32">
-        {/* Eyebrow */}
+    <section className="px-6 pb-20 pt-12 md:pt-20">
+      <div className="mx-auto max-w-4xl">
         <motion.div
-          custom={0}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="flex items-center justify-between"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="overflow-hidden rounded-lg border border-border bg-card/70 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.8)] backdrop-blur-sm"
         >
-          <span className="eyebrow">ML Engineer · Entrepreneur</span>
-          <span className="eyebrow flex items-center gap-2">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-teal" />
-            Disponible · 2026
-          </span>
-        </motion.div>
-
-        {/* Name */}
-        <motion.h1
-          custom={1}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-8 text-[clamp(3rem,9vw,7.5rem)] font-light leading-[0.95] tracking-tight"
-        >
-          Thomas
-          <br />
-          Mebarki
-        </motion.h1>
-
-        {/* Statement */}
-        <motion.p
-          custom={2}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-8 max-w-2xl font-display text-2xl italic leading-snug text-foreground/90 sm:text-3xl"
-        >
-          Je construis des modèles qui servent le business, pas l&apos;inverse.
-        </motion.p>
-
-        {/* Supporting line */}
-        <motion.p
-          custom={3}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground"
-        >
-          Fondateur d&apos;EGIR, Grada et JobScout. J&apos;amène le Machine Learning
-          jusqu&apos;en production, là où il crée de la valeur réelle.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          custom={4}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
-        >
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Voir mes projets
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-          <Link
-            href="https://egir.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground/80 transition-colors hover:text-teal"
-          >
-            Découvrir EGIR
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </motion.div>
-
-        {/* Project ticker */}
-        <motion.div
-          custom={5}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-6"
-        >
-          <span className="eyebrow">Projets</span>
-          {SIGNATURE_PROJECTS.map((p) => (
-            <span key={p} className="font-display text-lg text-foreground/70">
-              {p}
+          {/* Title bar */}
+          <div className="flex items-center gap-2 border-b border-border bg-secondary/40 px-4 py-3">
+            <span className="flex gap-1.5">
+              <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+              <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+              <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
             </span>
-          ))}
+            <span className="ml-3 font-mono text-xs text-muted-foreground">
+              thomas@mebarki: ~/portfolio
+            </span>
+            <span className="ml-auto hidden font-mono text-xs text-muted-foreground sm:inline">
+              zsh — 80×24
+            </span>
+          </div>
+
+          {/* Terminal body */}
+          <motion.div
+            variants={group}
+            initial="hidden"
+            animate="show"
+            className="space-y-5 p-6 font-mono text-sm leading-relaxed sm:p-8"
+          >
+            <motion.p variants={line} className="text-muted-foreground">
+              <span className="text-teal"># </span>status: disponible · 2026 · remote
+            </motion.p>
+
+            {/* whoami */}
+            <motion.div variants={line}>
+              <Cmd>whoami</Cmd>
+              <h1 className="mt-2 text-[clamp(2.1rem,7vw,4.5rem)] font-bold leading-[0.95] tracking-tight text-foreground">
+                Thomas Mebarki
+              </h1>
+              <p className="mt-2 text-sm text-muted-foreground">
+                ML Engineer<span className="text-teal"> · </span>Entrepreneur
+              </p>
+            </motion.div>
+
+            {/* manifesto */}
+            <motion.div variants={line}>
+              <Cmd>cat manifesto.txt</Cmd>
+              <p className="mt-2 max-w-2xl text-base text-foreground/80 sm:text-lg">
+                &laquo; Je construis des modèles qui servent le business, pas
+                l&apos;inverse. &raquo;
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+                Fondateur d&apos;EGIR, Grada et JobScout. J&apos;amène le ML
+                jusqu&apos;en production, là où il crée de la valeur.
+              </p>
+            </motion.div>
+
+            {/* ls projects */}
+            <motion.div variants={line}>
+              <Cmd>ls projects/</Cmd>
+              <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1.5">
+                {projects.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/projects/${p.slug}`}
+                    className="group text-foreground/70 underline-offset-4 transition-colors hover:text-teal hover:underline"
+                  >
+                    {p.slug}
+                    <span className="text-muted-foreground group-hover:text-teal">
+                      /
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* actions */}
+            <motion.div variants={line}>
+              <Cmd>open _</Cmd>
+              <div className="mt-2 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/projects"
+                  className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  ./voir-mes-projets
+                </Link>
+                <Link
+                  href="https://egir.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1 rounded-md border border-border px-4 py-2 text-sm text-foreground/80 transition-colors hover:border-teal/50 hover:text-teal"
+                >
+                  egir.app
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* live prompt */}
+            <motion.p variants={line} className="text-muted-foreground">
+              <span className="text-teal">❯</span>{" "}
+              <span className="cursor-blink inline-block text-teal">▋</span>
+            </motion.p>
+          </motion.div>
         </motion.div>
       </div>
     </section>
